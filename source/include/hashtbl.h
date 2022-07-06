@@ -1,7 +1,7 @@
 // @author: Selan
 //
-#ifndef _HASHTBL_H_
-#define _HASHTBL_H_
+#ifndef HASHTBL_H
+#define HASHTBL_H
 
 #include <iostream>     // cout, endl, ostream
 #include <forward_list> // forward_list
@@ -37,8 +37,8 @@ namespace ac // Associative container
         public:
             // Aliases
             using entry_type = HashEntry<KeyType,DataType>;
-            using list_type = std::forward_list< entry_type >;
-            using size_type = std::size_t;
+            using list_type  = std::forward_list< entry_type >;
+            using size_type  = std::size_t;
 
             explicit HashTbl( size_type table_sz_ = DEFAULT_SIZE );
             HashTbl( const HashTbl& );
@@ -72,8 +72,8 @@ namespace ac // Associative container
         private:
             size_type m_size; //!< Tamanho da tabela.
             size_type m_count;//!< Numero de elementos na tabel.
-            std::unique_ptr< std::forward_list< entry_type > [] > m_table;
-            //std::list< entry_type > *mpDataTable; //!< Tabela de listas para entradas de tabela.
+            // std::unique_ptr< std::forward_list< entry_type > [] > m_table;
+            std::forward_list< entry_type > *m_table; //!< Tabela de listas para entradas de tabela.
             static const short DEFAULT_SIZE = 10;
     };
 
